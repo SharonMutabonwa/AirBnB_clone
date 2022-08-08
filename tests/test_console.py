@@ -345,11 +345,6 @@ EOF  all  count  create  destroy  help  quit  show  update
     def help_test_do_all(self, classname):
         """Helps test the all command."""
         uid = self.create_class(classname)
-        with patch('sys.stdout', new=StringIO()) as f:
-            HBNBCommand().onecmd("all")
-        s = f.getvalue()[:-1]
-        self.assertTrue(len(s) > 0)
-        self.assertIn(uid, s)
 
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("all {}".format(classname))
